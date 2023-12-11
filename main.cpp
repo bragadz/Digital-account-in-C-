@@ -9,7 +9,7 @@ class ContaBancaria
 {
 
 private:
-    int conta;
+    long long conta;
     string titular;
     double saldo;
 
@@ -70,12 +70,15 @@ void registrarNovoUsuario(ContaBancaria *usuarios, int &totalUsuarios, int capac
 {
     if (totalUsuarios < capacidadeMaxima)
     {
-        int numeroConta;
+        long long numeroConta;
         string titular;
 
         cout << "Digite o numero da conta: ";
         cin >> numeroConta;
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
         cout << "Digite o nome do titular: ";
+        
         cin.ignore();
         getline(cin, titular);
 
@@ -91,7 +94,7 @@ void registrarNovoUsuario(ContaBancaria *usuarios, int &totalUsuarios, int capac
 
 void realizarOperacoes(ContaBancaria *usuarios, int totalUsuarios)
 {
-    int numeroConta;
+    long long numeroConta;
     cout << "Digite o numero da conta: ";
     cin >> numeroConta;
 
@@ -145,7 +148,7 @@ void realizarOperacoes(ContaBancaria *usuarios, int totalUsuarios)
 
 int main()
 {
-    const int capacidadeMaxima = 100;
+    int capacidadeMaxima = 100;
     ContaBancaria *usuarios = new ContaBancaria[capacidadeMaxima];
     int totalUsuarios = 0;
 
